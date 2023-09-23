@@ -100,7 +100,11 @@
     outline: 0;  												           
     cursor: pointer;													   
     transition: background 1s;    										
-}                    												        
+}  
+
+button:hover{
+   background: #6c3718;
+}
 
 .input-group{                       								                           
     height: 240px;                                           								
