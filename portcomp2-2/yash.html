@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: url(try3.jpeg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            color:rgb(0, 255, 47);
+            
+            
+        }
+
+        .exercise-container {
+           
+            width: 20%;
+            margin: 0 auto;
+            margin-right: 20%;
+            margin-left: 10%;
+            
+        }
+
+        .exercise-group {
+            margin-bottom: 20px;
+            
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            
+        }
+
+        select, input{
+            width: 100%;
+            padding: 1px;
+            margin-bottom: 6px;
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <center><h1 >Select an Exercise and Enter Weight & Repetitions</h1></center>
+
+    <div class="exercise-container">
+        <div class="exercise-group">
+            <label for="upper-exercise-select">Upper Body Exercise:</label>
+            
+            <select id="upper-exercise-select">
+                <option value="Bench Press">Bench Press</option>
+                <option value="Dips">Dips</option>
+                <option value="Push Ups">Push Ups</option>
+            </select>
+
+            <label for="upper-weight-input">Weight (in kg):</label>
+            <input type="number" id="upper-weight-input" placeholder="Enter weight">
+            <label for="upper-repetitions-input">Repetitions:</label>
+            <input type="number" id="upper-repetitions-input" placeholder="Enter repetitions">
+        </div>
+        <br><br>
+        <div class="exercise-group">
+            
+            <label for="lower-exercise-select">Lower Body Exercise:</label>
+            <select id="lower-exercise-select">
+                <option value="Deadlift">Deadlift</option>
+                <option value="Squats">Squats</option>
+                <option value="Leg Press">Leg Press</option>
+            </select>
+
+            <label for="lower-weight-input">Weight (in kg):</label>
+            <input type="number" id="lower-weight-input" placeholder="Enter weight">
+            <label for="lower-repetitions-input">Repetitions:</label>
+            <input type="number" id="lower-repetitions-input" placeholder="Enter repetitions">
+        </div>
+            <br><br>
+        <div class="exercise-group">
+            <label for="leg-exercise-select">Leg Exercise:</label>
+            
+            <select id="leg-exercise-select">
+                <option value="Squats">Squats</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Lunges">Lunges</option>
+            </select>
+
+            <label for="leg-weight-input">Weight (in kg):</label>
+            <input type="number" id="leg-weight-input" placeholder="Enter weight">
+            <label for="leg-repetitions-input">Repetitions:</label>
+            <input type="number" id="leg-repetitions-input" placeholder="Enter repetitions">
+        </div>
+
+      
+
+        <button onclick="calculateLifterCategory()">Submit</button>
+    </div>
+
+
+    <div id="output" class="exercise-container">
+        
+    </div>
+
+    <script>
+        function calculateLifterCategory() {
+            var upperWeight = parseFloat(document.getElementById("upper-weight-input").value);
+            var lowerWeight = parseFloat(document.getElementById("lower-weight-input").value);
+            var legWeight = parseFloat(document.getElementById("leg-weight-input").value);
+            
+            var upperRepetitions = parseInt(document.getElementById("upper-repetitions-input").value);
+            var lowerRepetitions = parseInt(document.getElementById("lower-repetitions-input").value);
+            var legRepetitions = parseInt(document.getElementById("leg-repetitions-input").value);
+            
+           
+            if (upperWeight < 0 || lowerWeight < 0 || legWeight < 0  ||
+                upperRepetitions < 0 || lowerRepetitions < 0 || legRepetitions < 0 ) {
+                alert("Weight and repetitions cannot be negative. Please enter valid values.");
+                return;
+            }
+
+            
+            var totalUpperWeight = upperWeight * upperRepetitions*0.33;
+            var totalLowerWeight = lowerWeight * lowerRepetitions*0.33;
+            var totalLegWeight = legWeight * legRepetitions*0.33;
+            
+
+            
+            var totalWeight = totalUpperWeight + totalLowerWeight + totalLegWeight ;
+           
+            var lifterCategory_upper = "not selected upper body";
+            if (totalUpperWeight < 50) {
+                lifterCategory_upper = "Newbie in Upper body";
+            } else if (totalUpperWeight >= 50 && totalUpperWeight  < 100) {
+                lifterCategory_upper = "Intermediate in upper body";
+            } else if(totalUpperWeight  > 100) {
+                lifterCategory_upper = "Advanced in upper body";
+            }
+
+
+            var lifterCategory_Lower = "not selected lower body";
+            if (totalLowerWeight < 50) {
+                lifterCategory_Lower = "Newbie in lower body";
+            } else if (totalLowerWeight >= 50 && totalLowerWeight  < 100) {
+                lifterCategory_Lower = "Intermediate in lower body";
+            } else if( totalLowerWeight  > 100) {
+                lifterCategory_Lower = "Advanced in lower body";
+            }
+
+
+            var lifterCategory_Leg = "not selected legs";
+            if (totalLegWeight < 50) {
+                lifterCategory_Leg = "Newbie in Leg body";
+            } else if (totalLegWeight >= 50 && totalLegWeight  < 100) {
+                lifterCategory_Leg = "Intermediate in Leg body";
+            } else if(totalLegWeight  > 100){
+                lifterCategory_Leg = "Advanced in Leg body";
+            }
+
+            
+
+           
+            alert(lifterCategory_upper);
+
+            alert(lifterCategory_Lower);
+            alert(lifterCategory_Leg);
+            
+            return;
+        }
+    </script>
+</body>
+</html>

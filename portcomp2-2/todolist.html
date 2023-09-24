@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('todolist.jpg'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f0f0f0; 
+            margin: 0;
+            padding: 0;
+        }
+
+        #todo-list {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.95); 
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .task span {
+            flex-grow: 1;
+            color: #333;
+        }
+
+        .task button {
+            background-color: #f44336; 
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .task button:hover {
+            background-color: #d32f2f; 
+        }
+
+        input[type="text"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo-list">
+        <h1>To-Do List</h1>
+        <div>
+            <input type="text" id="task" placeholder="Add a new task">
+            <button onclick="addTask()">Add</button>
+        </div>
+        <ul id="task-list"></ul>
+    </div>
+
+    
+        <script>
+    function addTask() {
+        const taskInput = document.getElementById("task");
+        const taskText = taskInput.value.trim();
+
+        if (taskText !== "") {
+            const taskList = document.getElementById("task-list");
+            const taskItem = document.createElement("li");
+            taskItem.className = "task";
+            taskItem.innerHTML = `
+                <input type="checkbox" onchange="toggleTask(this)">
+                <span>${taskText}</span>
+                <button onclick="deleteTask(this)">Delete</button>
+            `;
+            taskList.appendChild(taskItem);
+            taskInput.value = "";
+        }
+    }
+
+    function toggleTask(checkbox) {
+        const taskText = checkbox.nextElementSibling;
+        if (checkbox.checked) {
+            taskText.style.textDecoration = "line-through";
+        } else {
+            taskText.style.textDecoration = "none";
+        }
+    }
+
+    function deleteTask(button) {
+        const taskItem = button.parentElement;
+        taskItem.remove();
+    }
+</script>
+
+
+</body>
+</html>

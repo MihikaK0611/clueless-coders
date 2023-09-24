@@ -1,0 +1,79 @@
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-image: linear-gradient(rgba(0, 0, 10, 0.7),rgba(0, 0, 10, 0.7)), url(backgroundimage.jpeg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+header {
+    background-color: rgb(218, 188, 106);
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+h1 {
+    text-align: center;
+    flex: 1; 
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancel-button {
+    background-color: rgb(218, 188, 106);
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cancel-button:hover {
+    text-decoration: underline;
+    text-decoration-color: #333;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+ul {
+    margin-left: 20px;
+    list-style-type: disc;
+}
